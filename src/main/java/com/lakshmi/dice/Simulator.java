@@ -8,21 +8,24 @@ public class Simulator {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
-		try {
-			System.out.println("How many dice would you like to roll?");
-			int numOfDice = sc.nextInt();
-			System.out.println("About to roll "+numOfDice+" dice.");
-			
-			Random rand = new Random();
-			
-			for(int i = 0; i < numOfDice; i++) {
-				int rollNumber = rand.nextInt(6)+1;
-				System.out.println(display(rollNumber));
+		while(true) {
+			try {
+				System.out.println("How many dice would you like to roll?");
+				int numOfDice = sc.nextInt();
+				System.out.println("About to roll "+numOfDice+" dice.");
+				
+				Random rand = new Random();
+				
+				for(int i = 0; i < numOfDice; i++) {
+					int rollNumber = rand.nextInt(6)+1;
+					System.out.println(display(rollNumber));
+				}
+			}catch(InputMismatchException e) {
+				System.out.println("This is not a valid number!");
+				sc.next();
 			}
-		}catch(InputMismatchException e) {
-			System.out.println("This is not a valid number!");
+			
 		}
-		
 	}
 	
 	static String display(int value) {
